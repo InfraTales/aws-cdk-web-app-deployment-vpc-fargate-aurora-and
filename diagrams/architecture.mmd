@@ -1,0 +1,19 @@
+graph TD
+    subgraph AWS["AWS Cloud"]
+        RDS[(RDS)]
+        S3[(S3)]
+        CF[CloudFront]
+        EB[EventBridge]
+        ECS[ECS Fargate]
+        KMS[KMS]
+        SM[Secrets Manager]
+    end
+
+    Aurora --> RDS
+    RDS --> S3
+    S3 --> CF
+    CF --> EB
+    EB --> ECS
+    ECS --> KMS
+    KMS --> SM
+    S3 -.->|metrics| CW[CloudWatch]
