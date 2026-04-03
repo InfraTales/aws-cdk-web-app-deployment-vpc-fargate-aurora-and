@@ -1,0 +1,9 @@
+sequenceDiagram
+    User->>Aurora: Request
+    Aurora->>RDS: Request
+    RDS->>S3: Request
+    S3->>CF: Request
+    CF-->>S3: Response
+    S3-->>RDS: Response
+    RDS-->>Aurora: Response
+    Aurora-->>User: Response
